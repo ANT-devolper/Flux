@@ -1,0 +1,83 @@
+/* Flux — workflow screen */
+
+.flow-panel {
+  background: var(--surface-2);
+  min-height: 64vh;
+}
+.flow-heading {
+  background: var(--surface-solid);
+  color: var(--pill-dark);
+  max-width: 320px;
+  margin: 4px auto 40px;
+}
+
+.flow-stage-wrap { position: relative; padding-top: 40px; }
+
+/* Curved connectors layer sitting above the node row. */
+.flow-connectors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+}
+.connector-path {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: .4;
+  opacity: .6;
+  vector-effect: non-scaling-stroke;
+}
+
+.flow-nodes {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.flow-node {
+  flex: 0 0 180px;
+  background: var(--bg-darker);
+  border-radius: 14px;
+  padding: 10px;
+}
+.flow-node-header {
+  text-align: center;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: 6px;
+  margin-bottom: 10px;
+}
+.flow-node-body {
+  background: var(--accent-soft);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.edit-card {
+  align-self: stretch;
+  background: var(--surface-solid);
+  color: var(--pill-dark);
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  font-family: var(--font);
+  font-size: .9rem;
+  cursor: pointer;
+}
+.edit-card:hover { filter: brightness(1.08); }
+.flow-plus {
+  background: none;
+  border: none;
+  color: var(--pill-dark);
+  font-size: 3.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.flow-plus:hover { filter: brightness(1.3); }
