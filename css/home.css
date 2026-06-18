@@ -1,0 +1,58 @@
+/* Flux — home screen */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-darker);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  max-width: 620px;
+  margin: 0 auto 22px;
+}
+.search-bar .search-ico { display: inline-flex; }
+.search-bar input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 1rem;
+  font-family: var(--font);
+}
+
+.home-panel { min-height: 60vh; }
+.templates-title { margin-top: 36px; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 22px;
+}
+
+.board-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 120px;
+  padding: 18px;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  /* default: dark kanban card */
+  background: var(--bg-darker);
+  color: var(--accent);
+  transition: transform .12s, filter .2s;
+}
+.board-card:hover { transform: translateY(-3px); filter: brightness(1.12); }
+
+.create-card,
+.template-card {
+  background: var(--surface-solid);
+  color: var(--pill-dark);
+}
