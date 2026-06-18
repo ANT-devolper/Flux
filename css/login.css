@@ -1,0 +1,100 @@
+/* Flux — login screen */
+
+.login-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: clamp(24px, 6vw, 90px);
+  min-height: calc(100vh - 56px);
+  flex-wrap: wrap;
+}
+
+/* ----- Branding column ----- */
+.brand { flex: 1 1 380px; max-width: 560px; }
+.brand-title {
+  color: var(--accent);
+  font-size: clamp(4rem, 11vw, 8rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: .9;
+}
+.brand-sub {
+  color: var(--text);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  margin-top: 4px;
+}
+.brand-cta { margin-top: clamp(40px, 12vh, 130px); }
+.brand-cta p {
+  color: var(--accent);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: 18px;
+}
+.brand-cta .btn { font-size: 1.15rem; padding: 12px 40px; }
+
+/* ----- Login card ----- */
+.login-card {
+  flex: 0 1 420px;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+}
+.login-card h2 {
+  color: var(--accent);
+  text-align: center;
+  font-size: 2rem;
+}
+.card-logo { width: 42px; height: 42px; margin: 6px auto 22px; }
+
+.login-card label {
+  font-size: .85rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.login-card input {
+  background: var(--surface-solid);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 11px 18px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  color: var(--pill-dark);
+  outline: none;
+}
+.login-card input:focus { box-shadow: 0 0 0 2px var(--accent); }
+
+.forgot { text-align: center; margin: 2px 0 18px; }
+.forgot a {
+  display: block;
+  color: var(--text-muted);
+  font-size: .8rem;
+  text-decoration: none;
+}
+.forgot a:hover { color: var(--accent); }
+
+.entrar { align-self: center; padding: 10px 44px; margin-bottom: 22px; }
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-darker);
+  color: var(--text);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 11px 18px;
+  margin-top: 12px;
+  font-size: 1rem;
+  font-family: var(--font);
+  cursor: pointer;
+}
+.social-btn:hover { filter: brightness(1.25); }
+.social-btn .ico {
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
+  display: inline-flex;
+}
+.social-btn .ico.qr { background: #2a1d12; }

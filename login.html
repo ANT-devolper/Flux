@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flux — Login</title>
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="waves" aria-hidden="true">
+    <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+      <rect width="1280" height="720" fill="#1f1810"/>
+      <path d="M0 300 C300 240 500 360 760 320 C1000 285 1120 230 1280 250 L1280 470 C1080 430 980 500 720 470 C420 435 260 520 0 470 Z" fill="#2c2113" opacity="0.7"/>
+      <path d="M0 540 C260 480 460 600 760 560 C1020 525 1140 470 1280 500 L1280 720 L0 720 Z" fill="#3a2a17" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <nav class="navbar">
+    <img class="logo" src="assets/logo.svg" alt="Flux">
+    <span class="nav-spacer"></span>
+  </nav>
+
+  <main class="login-layout">
+    <section class="brand">
+      <h1 class="brand-title">FLUX</h1>
+      <p class="brand-sub">Larali larala lituripa litora</p>
+
+      <div class="brand-cta">
+        <p>Cadastre-se já e entre no fluxo</p>
+        <button class="btn btn-ghost" type="button">Cadastrar-se</button>
+      </div>
+    </section>
+
+    <section class="login-card">
+      <h2>Seja Bem Vindo!</h2>
+      <img class="card-logo" src="assets/logo.svg" alt="">
+
+      <form onsubmit="event.preventDefault(); window.location.href='home.html';">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" autocomplete="off">
+
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" autocomplete="off">
+
+        <div class="forgot">
+          <a href="#">Esqueceu a Senha?</a>
+          <a href="#">Esqueceu o E-mail?</a>
+        </div>
+
+        <button class="btn btn-primary entrar" type="submit">Entrar</button>
+      </form>
+
+      <button class="social-btn" type="button" onclick="window.location.href='home.html'">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="22" height="22">
+            <path fill="#4285F4" d="M45 24c0-1.5-.1-3-.4-4.4H24v8.4h11.8c-.5 2.8-2 5.1-4.4 6.7v5.6h7.1C42.7 36.5 45 30.8 45 24z"/>
+            <path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.6c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.1 15.4 46 24 46z"/>
+            <path fill="#FBBC05" d="M11.8 28.2c-.4-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2v-5.7H4.5C3 17.1 2.1 20.4 2.1 24s.9 6.9 2.4 9.9l7.3-5.7z"/>
+            <path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.1 29.9 2 24 2 15.4 2 8.1 6.9 4.5 14.1l7.3 5.7c1.7-5.2 6.5-9.1 12.2-9.1z"/>
+          </svg>
+        </span>
+        Entrar com a conta google
+      </button>
+
+      <button class="social-btn" type="button" onclick="window.location.href='home.html'">
+        <span class="ico qr" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#e8841f">
+            <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm8 0h2v2h-2v-2zm4 0h4v2h-2v2h2v2h-4v-2h-2v-2h2v-2zm-4 4h2v2h-2v-2z"/>
+          </svg>
+        </span>
+        Entrar via QR Code
+      </button>
+    </section>
+  </main>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>
