@@ -1,0 +1,95 @@
+/* Flux — config screen */
+
+.config-panel {
+  background: var(--surface-2);
+  min-height: 64vh;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.config-pill {
+  background: var(--pill-dark);
+  color: var(--accent);
+  max-width: 240px;
+  margin: 0 0 26px;
+}
+.aparencia-pill { margin-top: 44px; }
+
+/* ----- Profile ----- */
+.profile {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 10px 10px 30px;
+}
+.avatar-block { text-align: center; }
+.avatar {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: var(--surface-solid);
+  margin: 0 auto 8px;
+  cursor: pointer;
+}
+.avatar-label { font-size: .8rem; color: var(--text-muted); }
+
+.profile-info {
+  background: var(--surface-solid);
+  color: var(--pill-dark);
+  border-radius: 18px;
+  padding: 22px 28px;
+  flex: 1 1 320px;
+  line-height: 2;
+}
+.profile-info strong { color: var(--accent); }
+
+/* ----- Appearance ----- */
+.appearance {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 0 10px 0 30px;
+}
+.toggle-list { display: flex; flex-direction: column; gap: 16px; }
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: .95rem;
+  cursor: pointer;
+}
+.toggle-row.centered { justify-content: center; margin-top: 12px; }
+
+/* Switch */
+.switch { position: relative; display: inline-block; width: 56px; height: 26px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; inset: 0;
+  background: var(--pill-dark);
+  border-radius: var(--radius-pill);
+  transition: background .2s;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 20px; width: 20px;
+  left: 3px; top: 3px;
+  background: var(--accent);
+  border-radius: 50%;
+  transition: transform .2s;
+}
+.switch input:checked + .slider::before { transform: translateX(30px); }
+
+/* ----- Custom colour ----- */
+.custom-color { text-align: center; }
+#accent-picker {
+  width: 110px; height: 100px;
+  border: none;
+  border-radius: 16px;
+  background: none;
+  cursor: pointer;
+}
+
+/* Decorative appearance modes */
+body.no-anim * { transition: none !important; }
+body.compact .profile-info { line-height: 1.4; padding: 12px 18px; }
