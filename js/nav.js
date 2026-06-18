@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (a.getAttribute("href") === page) a.classList.add("active");
   });
 
-  // Hamburger is decorative in this MVP — just toggle a class for feedback.
+  // Hamburger opens the config screen (its only menu entry in this MVP).
   const burger = document.querySelector(".hamburger");
   if (burger) {
-    burger.addEventListener("click", () => burger.classList.toggle("open"));
+    burger.addEventListener("click", () => { location.href = "config.html"; });
   }
 });
