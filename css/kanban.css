@@ -1,0 +1,92 @@
+/* Flux — kanban board screen */
+
+.board {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  overflow-x: auto;
+}
+
+.column {
+  flex: 0 0 230px;
+  background: var(--bg-darker);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.column-header {
+  text-align: center;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: var(--radius-pill);
+}
+
+.card-list { display: flex; flex-direction: column; gap: 14px; }
+
+.task-card {
+  background: var(--surface-solid);
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: var(--pill-dark);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+.task-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: .95rem;
+  background: rgba(0,0,0,.12);
+  border-radius: 8px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.task-detalhes { margin-top: 4px; }
+.task-detalhes strong, .task-row strong { color: var(--pill-dark); }
+
+.dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  flex: 0 0 auto;
+}
+.dot-red { background: var(--status-red); }
+.dot-orange { background: var(--status-orange); }
+.dot-green { background: var(--status-green); }
+
+.add-card {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  align-self: center;
+  padding: 6px 16px;
+}
+.add-card:hover { filter: brightness(1.2); }
+
+/* Orange "Novo Card" column */
+.new-column {
+  background: var(--surface-solid);
+  align-items: center;
+  justify-content: flex-start;
+}
+.new-header { background: rgba(0,0,0,.10); color: var(--text-muted); width: 100%; }
+.new-plus {
+  background: none; border: none; cursor: pointer;
+  color: var(--pill-dark);
+  font-size: 4rem;
+  line-height: 1;
+  margin-top: 30px;
+}
+.new-plus:hover { filter: brightness(1.3); }
