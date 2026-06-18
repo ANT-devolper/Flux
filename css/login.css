@@ -31,13 +31,24 @@
   margin-bottom: 18px;
 }
 .brand-cta .btn { font-size: 1.15rem; padding: 12px 40px; }
+.brand-cta .btn-cadastrar {
+  background: #954f10;
+  color: var(--text);
+}
+.brand-cta .btn-cadastrar:hover { filter: brightness(1.1); }
 
 /* ----- Login card ----- */
 .login-card {
   flex: 0 1 420px;
-  background: var(--surface);
+  background: var(--login);
   border-radius: var(--radius-card);
-  padding: 40px 36px;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-card form {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -54,7 +65,7 @@
   margin-bottom: 4px;
 }
 .login-card input {
-  background: var(--surface-solid);
+  background: #8b6440;
   border: none;
   border-radius: var(--radius-pill);
   padding: 11px 18px;
@@ -77,6 +88,7 @@
 .entrar { align-self: center; padding: 10px 44px; margin-bottom: 22px; }
 
 .social-btn {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 12px;
