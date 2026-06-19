@@ -166,7 +166,7 @@ function buildCard(stage, c) {
   card.appendChild(row);
 
   const paraRow = document.createElement("div");
-  paraRow.className = "task-row";
+  paraRow.className = "task-para";
   paraRow.innerHTML = "<strong>Para:</strong> ";
   paraRow.appendChild(editable("task-para", c.para, (v) => { c.para = v; save(); }, true));
   card.appendChild(paraRow);

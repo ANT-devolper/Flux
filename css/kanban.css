@@ -120,7 +120,8 @@
   gap: 8px;
 }
 .task-detalhes { margin-top: 4px; }
-.task-detalhes strong, .task-row strong { color: var(--pill-dark); }
+.task-para { margin-top: 4px; }
+.task-detalhes strong, .task-para strong, .task-row strong { color: var(--pill-dark); }
 
 .dot {
   width: 11px; height: 11px; border-radius: 50%;
