@@ -45,7 +45,18 @@
 }
 .column-delete:hover { opacity: 1; color: var(--accent); }
 
-.card-list { display: flex; flex-direction: column; gap: 14px; }
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 48px;
+  border-radius: 12px;
+  transition: background .15s, box-shadow .15s;
+}
+.card-list.drag-over {
+  background: rgba(232,132,31,.12);
+  box-shadow: inset 0 0 0 2px rgba(232,132,31,.5);
+}
 
 .task-card {
   position: relative;
@@ -71,6 +82,23 @@
 }
 .task-card:hover .task-delete { opacity: .6; }
 .task-delete:hover { opacity: 1; color: var(--status-red); }
+
+.task-card.dragging { opacity: .5; }
+.drag-handle {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  color: var(--pill-dark);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: grab;
+  opacity: 0;
+  transition: opacity .15s;
+  user-select: none;
+}
+.task-card:hover .drag-handle { opacity: .5; }
+.drag-handle:hover { opacity: 1; color: var(--accent); }
+.drag-handle:active { cursor: grabbing; }
 
 /* Inline-editable fields */
 .editable { outline: none; border-radius: 6px; }

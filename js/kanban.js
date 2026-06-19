@@ -1,7 +1,10 @@
 /* Flux — kanban board: render columns + cards for the selected board.
-   Everything is editable inline and persisted to localStorage via FLUX_STORE. */
+   Everything is editable inline and persisted to localStorage via FLUX_STORE.
+   Cards can be dragged (by their handle) between/within columns; the new
+   position is persisted. */
 
 let BOARD = null;
+let DRAG = null; // { fromStage, card } while a card is being dragged
 
 document.addEventListener("DOMContentLoaded", () => {
   BOARD = resolveBoard();
@@ -66,6 +69,24 @@ function buildColumn(stage) {
   const list = document.createElement("div");
   list.className = "card-list";
   (BOARD.columns[stage] || []).forEach((card) => list.appendChild(buildCard(stage, card)));
+
+  // Drop target: allow dropping dragged cards into this column.
+  list.addEventListener("dragover", (e) => {
+    if (!DRAG) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    list.classList.add("drag-over");
+  });
+  list.addEventListener("dragleave", (e) => {
+    if (!list.contains(e.relatedTarget)) list.classList.remove("drag-over");
+  });
+  list.addEventListener("drop", (e) => {
+    if (!DRAG) return;
+    e.preventDefault();
+    list.classList.remove("drag-over");
+    moveCard(DRAG.fromStage, DRAG.card, stage, getDropIndex(list, e.clientY));
+  });
+
   col.appendChild(list);
 
   const add = document.createElement("button");
@@ -87,6 +108,29 @@ function buildColumn(stage) {
 function buildCard(stage, c) {
   const card = document.createElement("article");
   card.className = "task-card";
+
+  // Drag handle: dragging is only enabled while grabbing the handle, so the
+  // inline-editable fields keep working normally.
+  const handle = document.createElement("span");
+  handle.className = "drag-handle";
+  handle.title = "Arrastar";
+  handle.textContent = "⠿";
+  handle.addEventListener("mousedown", () => { card.draggable = true; });
+  card.appendChild(handle);
+
+  card.addEventListener("dragstart", (e) => {
+    DRAG = { fromStage: stage, card: c };
+    card.classList.add("dragging");
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/plain", "");
+  });
+  card.addEventListener("dragend", () => {
+    card.classList.remove("dragging");
+    card.draggable = false;
+    DRAG = null;
+    document.querySelectorAll(".card-list.drag-over")
+      .forEach((el) => el.classList.remove("drag-over"));
+  });
 
   const del = document.createElement("button");
   del.className = "task-delete";
@@ -187,4 +231,27 @@ function deleteStage(stage) {
   delete BOARD.columns[stage];
   save();
   render();
+}
+
+// Move a card to toStage at toIndex, persist, and re-render.
+function moveCard(fromStage, card, toStage, toIndex) {
+  const from = BOARD.columns[fromStage];
+  const i = from.indexOf(card);
+  if (i === -1) return;
+  from.splice(i, 1);
+  // Removing an earlier item in the same column shifts the target index back.
+  if (fromStage === toStage && i < toIndex) toIndex--;
+  BOARD.columns[toStage].splice(toIndex, 0, card);
+  save();
+  render();
+}
+
+// Index (0..n) where the dragged card should land, based on cursor Y.
+function getDropIndex(listEl, y) {
+  const cards = [...listEl.querySelectorAll(".task-card:not(.dragging)")];
+  for (let i = 0; i < cards.length; i++) {
+    const box = cards[i].getBoundingClientRect();
+    if (y < box.top + box.height / 2) return i;
+  }
+  return cards.length;
 }
