@@ -25,9 +25,12 @@
   fill: none;
   stroke: var(--text);
   stroke-width: .4;
-  opacity: .6;
+  opacity: 0;
+  transition: opacity .15s;
   vector-effect: non-scaling-stroke;
 }
+/* Shown only while the adjacent card is hovered (toggled from JS). */
+.connector-path.active { opacity: .6; }
 
 .flow-nodes {
   display: flex;
@@ -71,7 +74,8 @@
 }
 .flow-arrow-prev { left: -22px; }
 .flow-arrow-next { right: -22px; }
-.flow-node:hover .flow-arrow { opacity: 1; }
+/* Revealed only while the card (flow-node-body) is hovered (class set in JS). */
+.flow-node.is-active .flow-arrow { opacity: 1; }
 .flow-node-body {
   background: var(--accent-soft);
   border-radius: 12px;

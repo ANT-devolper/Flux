@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   board.stages.forEach((stage, index) => {
     const node = document.createElement("div");
     node.className = "flow-node";
-    // Direction arrows are purely visual hints (revealed on column hover via
-    // CSS); the unavailable direction is omitted at the ends.
+    // Direction arrows and connectors are purely visual hints, revealed only
+    // while hovering this card; the unavailable direction is omitted at the ends.
     const prev = index > 0
       ? `<span class="flow-arrow flow-arrow-prev" aria-hidden="true">◀</span>` : "";
     const next = index < lastIndex
@@ -31,6 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
     nodesWrap.appendChild(node);
+
+    // Hovering the card reveals its own arrows and only its adjacent connectors
+    // (segment index-1 links the previous stage, segment index the next one).
+    // Paths are re-created on resize, so look them up at event time.
+    const body = node.querySelector(".flow-node-body");
+    const toggle = (on) => {
+      node.classList.toggle("is-active", on);
+      [index - 1, index].forEach((seg) => {
+        if (seg < 0 || seg > lastIndex - 1) return;
+        const path = document.getElementById(`connector-${seg}`);
+        if (path) path.classList.toggle("active", on);
+      });
+    };
+    body.addEventListener("mouseenter", () => toggle(true));
+    body.addEventListener("mouseleave", () => toggle(false));
   });
 
   drawConnectors(board.stages.length);
@@ -64,6 +79,7 @@ function drawConnectors(count) {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", `M${x1} ${H} C${x1} 2 ${x2} 2 ${x2} ${H}`);
     path.setAttribute("class", "connector-path");
+    path.setAttribute("id", `connector-${i}`);
     svg.appendChild(path);
   }
 }
