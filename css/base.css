@@ -1,20 +1,28 @@
 /* Flux — base theme shared across all screens */
 
 :root {
-  --bg-dark:        #1f1810;
-  --bg-darker:      #5a3919;
-  --navbar:         #b59a7e;
-  --login:          #bb9778;
-  --surface:        rgba(190, 150, 110, 0.22);
-  --surface-2:      rgba(190, 150, 110, 0.30);
-  --surface-solid:  #c79a6b;
-  --accent:         #e8841f;
-  --accent-soft:    #d97b2a;
+  /* Paleta oficial (designer) */
+  --header:           #ccaa8d;
+  --background:       #281808;
+  --detail-bg:        #754c24;
+  --orange-primary:   #dd7517;
+  --orange-secondary: #aa4300;
+
+  /* Aliases semânticos derivados da paleta */
+  --bg-dark:        var(--background);            /* fundo das páginas */
+  --bg-darker:      #160d04;                      /* cards/colunas escuros */
+  --navbar:         var(--header);
+  --login:          var(--header);
+  --surface:        rgba(204, 170, 141, 0.18);    /* painel translúcido (tom header) */
+  --surface-2:      rgba(204, 170, 141, 0.26);
+  --surface-solid:  #c79a6b;                      /* cards laranja/tan */
+  --accent:         var(--orange-primary);
+  --accent-soft:    #c2641a;                      /* variação suave do laranja primário */
   --pill-dark:      #2a1d12;
   --text:           #e9dcc9;
   --text-muted:     #b89a7a;
   --status-red:     #d64545;
-  --status-orange:  #e8841f;
+  --status-orange:  var(--orange-primary);
   --status-green:   #4caf50;
   --radius-pill:    999px;
   --radius-card:    24px;
@@ -103,7 +111,7 @@ body {
   background: transparent; color: var(--accent);
   border: 2px solid var(--accent);
 }
-.btn-ghost:hover { background: rgba(232,132,31,.12); }
+.btn-ghost:hover { background: rgba(221,117,23,.12); }
 
 .pill-title {
   display: block;

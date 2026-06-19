@@ -13,26 +13,26 @@
 /* ----- Branding column ----- */
 .brand { flex: 1 1 380px; max-width: 560px; }
 .brand-title {
-  color: #b96213;
+  color: var(--orange-secondary);
   font-size: clamp(4rem, 11vw, 8rem);
   font-weight: 800;
   letter-spacing: 2px;
   line-height: .9;
 }
 .brand-sub {
-  color: #ac8a6d;
+  color: var(--text-muted);
   font-size: clamp(1.4rem, 3vw, 2.2rem);
   margin-top: 4px;
 }
 .brand-cta { margin-top: clamp(32px, 8vh, 80px); }
 .brand-cta p {
-  color: #954f10;
+  color: var(--orange-secondary);
   font-size: clamp(1.4rem, 3vw, 2rem);
   margin-bottom: 18px;
 }
 .brand-cta .btn { font-size: 1.15rem; padding: 12px 40px; }
 .brand-cta .btn-cadastrar {
-  background: #954f10;
+  background: var(--orange-secondary);
   color: #000;
 }
 .brand-cta .btn-cadastrar:hover { filter: brightness(1.1); }
@@ -61,11 +61,11 @@
 
 .login-card label {
   font-size: .85rem;
-  color: #000;
+  color: var(--pill-dark);
   margin-bottom: 4px;
 }
 .login-card input {
-  background: #8b6440;
+  background: var(--detail-bg);
   border: none;
   border-radius: var(--radius-pill);
   padding: 11px 18px;
@@ -79,7 +79,7 @@
 .forgot { text-align: center; margin: 6px 0 12px; }
 .forgot a {
   display: block;
-  color: #000;
+  color: var(--pill-dark);
   font-size: .8rem;
   margin: 6px 0 6px;
   text-decoration: none;
@@ -110,4 +110,4 @@
   padding: 4px;
   display: inline-flex;
 }
-.social-btn .ico.qr { background: #2a1d12; }
+.social-btn .ico.qr { background: var(--pill-dark); }
