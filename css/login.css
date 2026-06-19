@@ -81,6 +81,7 @@
   display: block;
   color: #000;
   font-size: .8rem;
+  margin: 6px 0 6px;
   text-decoration: none;
 }
 .forgot a:hover { color: var(--accent); }
