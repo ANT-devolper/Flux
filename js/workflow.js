@@ -2,10 +2,16 @@
    Purely visual in this MVP. */
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("board-name").textContent = FLUX_DATA.board.name;
+  const board = resolveBoard();
+  if (!board) {
+    document.getElementById("board-name").textContent = "Nenhum kanban";
+    return;
+  }
+  FLUX_STORE.setActiveId(board.id);
+  document.getElementById("board-name").textContent = board.name;
 
   const nodesWrap = document.getElementById("flow-nodes");
-  FLUX_DATA.board.stages.forEach((stage) => {
+  board.stages.forEach((stage) => {
     const node = document.createElement("div");
     node.className = "flow-node";
     node.innerHTML = `
@@ -18,9 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
     nodesWrap.appendChild(node);
   });
 
-  drawConnectors(FLUX_DATA.board.stages.length);
-  window.addEventListener("resize", () => drawConnectors(FLUX_DATA.board.stages.length));
+  drawConnectors(board.stages.length);
+  window.addEventListener("resize", () => drawConnectors(board.stages.length));
 });
+
+// Pick the board from ?id=, then the active id, then the first kanban.
+function resolveBoard() {
+  const list = FLUX_STORE.loadKanbans();
+  const param = new URLSearchParams(location.search).get("id");
+  return (
+    (param && list.find((k) => k.id === param)) ||
+    (FLUX_STORE.getActiveId() && list.find((k) => k.id === FLUX_STORE.getActiveId())) ||
+    list[0] ||
+    null
+  );
+}
 
 // Draw curved links between the tops of evenly spaced nodes.
 function drawConnectors(count) {

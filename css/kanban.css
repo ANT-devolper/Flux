@@ -18,7 +18,11 @@
 }
 
 .column-header {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
   background: var(--surface-2);
   color: var(--text-muted);
   font-size: 1.15rem;
@@ -26,10 +30,25 @@
   padding: 8px;
   border-radius: var(--radius-pill);
 }
+.column-name { outline: none; padding: 0 4px; border-radius: 6px; }
+.column-name:focus { background: rgba(232,132,31,.18); }
+.column-delete {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: .5;
+}
+.column-delete:hover { opacity: 1; color: var(--accent); }
 
 .card-list { display: flex; flex-direction: column; gap: 14px; }
 
 .task-card {
+  position: relative;
   background: var(--surface-solid);
   border-radius: 14px;
   padding: 12px 14px;
@@ -37,6 +56,26 @@
   font-size: .85rem;
   line-height: 1.5;
 }
+.task-delete {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--pill-dark);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .15s;
+}
+.task-card:hover .task-delete { opacity: .6; }
+.task-delete:hover { opacity: 1; color: var(--status-red); }
+
+/* Inline-editable fields */
+.editable { outline: none; border-radius: 6px; }
+.editable:focus { background: rgba(0,0,0,.10); box-shadow: 0 0 0 2px rgba(232,132,31,.4); }
+.dot { cursor: pointer; }
 .task-title {
   text-align: center;
   font-weight: 600;
