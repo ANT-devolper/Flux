@@ -33,10 +33,12 @@
   display: flex;
   justify-content: space-around;
   gap: 16px;
-  flex-wrap: wrap;
+  /* Columns always stay on one row; the board scrolls horizontally instead. */
+  overflow-x: auto;
 }
 
 .flow-node {
+  position: relative;
   flex: 0 0 180px;
   background: var(--bg-darker);
   border-radius: 14px;
@@ -50,7 +52,26 @@
   border-radius: var(--radius-pill);
   padding: 6px;
   margin-bottom: 10px;
+  transition: background .15s;
 }
+/* Only the header reacts to hover: darker brown when the column is hovered. */
+.flow-node:hover .flow-node-header { background: var(--bg-darker); }
+
+/* Flow-direction hints in the gap between columns, over the connector line.
+   Revealed only while hovering the column; purely visual (no action). */
+.flow-arrow {
+  position: absolute;
+  top: -26px;
+  color: var(--accent);
+  font-size: 1.6rem;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s;
+}
+.flow-arrow-prev { left: -22px; }
+.flow-arrow-next { right: -22px; }
+.flow-node:hover .flow-arrow { opacity: 1; }
 .flow-node-body {
   background: var(--accent-soft);
   border-radius: 12px;
@@ -69,15 +90,13 @@
   padding: 6px;
   font-family: var(--font);
   font-size: .9rem;
-  cursor: pointer;
+  cursor: default;
 }
-.edit-card:hover { filter: brightness(1.08); }
 .flow-plus {
   background: none;
   border: none;
   color: var(--pill-dark);
   font-size: 3.4rem;
   line-height: 1;
-  cursor: pointer;
+  cursor: default;
 }
-.flow-plus:hover { filter: brightness(1.3); }

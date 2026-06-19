@@ -11,10 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("board-name").textContent = board.name;
 
   const nodesWrap = document.getElementById("flow-nodes");
-  board.stages.forEach((stage) => {
+  const lastIndex = board.stages.length - 1;
+  board.stages.forEach((stage, index) => {
     const node = document.createElement("div");
     node.className = "flow-node";
+    // Direction arrows are purely visual hints (revealed on column hover via
+    // CSS); the unavailable direction is omitted at the ends.
+    const prev = index > 0
+      ? `<span class="flow-arrow flow-arrow-prev" aria-hidden="true">◀</span>` : "";
+    const next = index < lastIndex
+      ? `<span class="flow-arrow flow-arrow-next" aria-hidden="true">▶</span>` : "";
     node.innerHTML = `
+      ${prev}
+      ${next}
       <div class="flow-node-header">${stage}</div>
       <div class="flow-node-body">
         <button class="edit-card">Editar Card</button>
