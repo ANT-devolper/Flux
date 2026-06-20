@@ -30,7 +30,12 @@
   margin: 0 auto 8px;
   cursor: pointer;
 }
-.avatar-label { font-size: .8rem; color: var(--text-muted); }
+.avatar-label {
+  font-size: .8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
 
 .profile-info {
   background: var(--surface-solid);
