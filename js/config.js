@@ -1,5 +1,6 @@
-/* Flux — config screen: fill profile + wire appearance toggles.
-   Effects are visual only (no persistence). */
+/* Flux — config screen: fill profile + wire appearance toggles. Preferences are
+   persisted via FLUX_STORE and applied live (and on every page) via
+   FLUX_SETTINGS. The Dark Mode toggle is decorative (the theme is always dark).*/
 
 document.addEventListener("DOMContentLoaded", () => {
   // Profile from mock data.
@@ -7,29 +8,36 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("p-email").textContent = FLUX_DATA.profile.email;
   document.getElementById("p-role").textContent = FLUX_DATA.profile.role;
 
-  // Hide / show background waves.
-  const waves = document.querySelector(".waves");
-  document.getElementById("t-waves").addEventListener("change", (e) => {
-    if (waves) waves.style.display = e.target.checked ? "none" : "";
-  });
-
-  // Compact cards (decorative class on body).
-  document.getElementById("t-compact").addEventListener("change", (e) => {
-    document.body.classList.toggle("compact", e.target.checked);
-  });
-
-  // Fluid animations toggle.
-  document.getElementById("t-anim").addEventListener("change", (e) => {
-    document.body.classList.toggle("no-anim", !e.target.checked);
-  });
-
-  // Custom accent colour, applied only when the custom mode is on.
+  const compact = document.getElementById("t-compact");
+  const anim = document.getElementById("t-anim");
+  const waves = document.getElementById("t-waves");
   const picker = document.getElementById("accent-picker");
   const custom = document.getElementById("t-custom");
-  const applyAccent = () => {
-    document.documentElement.style.setProperty(
-      "--accent", custom.checked ? picker.value : "#e8841f");
+
+  // Reflect the saved settings in the controls.
+  const settings = FLUX_STORE.loadSettings();
+  compact.checked = settings.compact;
+  anim.checked = settings.anim;
+  waves.checked = settings.hideWaves;
+  custom.checked = settings.customAccent;
+  picker.value = settings.accent;
+
+  // Persist the current control state and apply it live across the page.
+  const commit = () => {
+    const next = {
+      compact: compact.checked,
+      anim: anim.checked,
+      hideWaves: waves.checked,
+      customAccent: custom.checked,
+      accent: picker.value,
+    };
+    FLUX_STORE.saveSettings(next);
+    FLUX_SETTINGS.apply(next);
   };
-  picker.addEventListener("input", applyAccent);
-  custom.addEventListener("change", applyAccent);
+
+  compact.addEventListener("change", commit);
+  anim.addEventListener("change", commit);
+  waves.addEventListener("change", commit);
+  custom.addEventListener("change", commit);
+  picker.addEventListener("input", commit);
 });

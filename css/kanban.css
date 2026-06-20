@@ -158,3 +158,10 @@
   margin-top: 30px;
 }
 .new-plus:hover { filter: brightness(1.3); }
+
+/* ---------- Compact mode (Config toggle, persisted) ---------- */
+body.compact .column { gap: 8px; }
+body.compact .card-list { gap: 8px; }
+body.compact .task-card { padding: 7px 9px; font-size: .78rem; line-height: 1.35; }
+body.compact .task-title { font-size: .85rem; padding: 3px; margin-bottom: 6px; }
+body.compact .task-detalhes, body.compact .task-para { margin-top: 2px; }

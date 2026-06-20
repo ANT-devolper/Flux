@@ -147,3 +147,7 @@ body {
 /* ---------- Layout helpers ---------- */
 .page { padding: 24px clamp(16px, 5vw, 64px) 64px; }
 .center-wrap { max-width: 1100px; margin: 0 auto; }
+
+/* ---------- Appearance modes (driven by Config, persisted) ---------- */
+body.no-anim * { transition: none !important; }
+body.hide-waves .waves { display: none; }

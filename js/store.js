@@ -4,6 +4,16 @@
 const FLUX_STORE = (() => {
   const KEY_KANBANS = "flux.kanbans";
   const KEY_ACTIVE = "flux.activeKanban";
+  const KEY_SETTINGS = "flux.settings";
+
+  // Appearance preferences. accent #dd7517 == --orange-primary (base.css).
+  const DEFAULT_SETTINGS = {
+    compact: false,
+    anim: true,
+    hideWaves: false,
+    customAccent: false,
+    accent: "#dd7517",
+  };
 
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
@@ -72,8 +82,26 @@ const FLUX_STORE = (() => {
     localStorage.setItem(KEY_ACTIVE, id);
   }
 
+  // Appearance settings, merged over the defaults so missing/new keys are safe.
+  function loadSettings() {
+    const raw = localStorage.getItem(KEY_SETTINGS);
+    if (raw) {
+      try {
+        return Object.assign({}, DEFAULT_SETTINGS, JSON.parse(raw));
+      } catch (_) {
+        /* corrupted — fall through to defaults */
+      }
+    }
+    return clone(DEFAULT_SETTINGS);
+  }
+
+  function saveSettings(settings) {
+    localStorage.setItem(KEY_SETTINGS, JSON.stringify(settings));
+  }
+
   return {
     loadKanbans, saveKanbans, getKanban, updateKanban,
     createKanban, deleteKanban, getActiveId, setActiveId,
+    loadSettings, saveSettings,
   };
 })();
