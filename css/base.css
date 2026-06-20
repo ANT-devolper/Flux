@@ -128,7 +128,7 @@ body {
 
 /* ---------- Cards / panels ---------- */
 .panel {
-  background: var(--surface);
+  background: var(--header);
   border-radius: var(--radius-card);
   padding: 28px;
 }

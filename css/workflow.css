@@ -1,7 +1,7 @@
 /* Flux — workflow screen */
 
 .flow-panel {
-  background: var(--surface-2);
+  background: var(--header);
   min-height: 64vh;
 }
 .flow-heading {
