@@ -20,7 +20,7 @@
   gap: 40px;
   align-items: center;
   flex-wrap: wrap;
-  padding: 0 10px 10px 30px;
+  padding: 0 30px 10px;
 }
 .avatar-block { text-align: center; }
 .avatar {
@@ -53,7 +53,7 @@
   justify-content: space-between;
   gap: 40px;
   flex-wrap: wrap;
-  padding: 0 10px 0 30px;
+  padding: 0 30px;
 }
 .toggle-list { display: flex; flex-direction: column; gap: 16px; }
 .toggle-row {
