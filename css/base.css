@@ -85,6 +85,8 @@ body {
   background: var(--surface-solid);
   color: var(--pill-dark);
 }
+/* In custom mode the active link text follows the chosen accent. */
+body.custom-accent .nav-links a.active { color: var(--accent); }
 
 .hamburger {
   width: 34px; height: 26px;

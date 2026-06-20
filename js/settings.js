@@ -8,6 +8,7 @@ const FLUX_SETTINGS = (() => {
     document.body.classList.toggle("compact", s.compact);
     document.body.classList.toggle("no-anim", !s.anim);
     document.body.classList.toggle("hide-waves", s.hideWaves);
+    document.body.classList.toggle("custom-accent", s.customAccent);
     if (s.customAccent) {
       document.documentElement.style.setProperty("--accent", s.accent);
     } else {
