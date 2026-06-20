@@ -23,14 +23,14 @@
 }
 .connector-path {
   fill: none;
-  stroke: var(--text);
-  stroke-width: .4;
+  stroke: #000;
+  stroke-width: 2;
   opacity: 0;
   transition: opacity .15s;
   vector-effect: non-scaling-stroke;
 }
 /* Shown only while the adjacent card is hovered (toggled from JS). */
-.connector-path.active { opacity: .6; }
+.connector-path.active { opacity: 1; }
 
 .flow-nodes {
   display: flex;
@@ -65,7 +65,7 @@
 .flow-arrow {
   position: absolute;
   top: -26px;
-  color: var(--accent);
+  color: #000;
   font-size: 1.6rem;
   line-height: 1;
   opacity: 0;
