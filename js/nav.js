@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Hamburger opens the config screen (its only menu entry in this MVP).
   const burger = document.querySelector(".hamburger");
   if (burger) {
+    // Highlight the hamburger when its destination (config) is the current page,
+    // mirroring how nav-links flag the active page.
+    if (page === "config.html") burger.classList.add("active");
     burger.addEventListener("click", () => { location.href = "config.html"; });
   }
 });

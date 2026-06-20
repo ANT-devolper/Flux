@@ -94,7 +94,9 @@ body {
 .hamburger span {
   display: block; height: 4px; border-radius: 2px;
   background: var(--pill-dark);
+  transition: background .2s;
 }
+.hamburger.active span { background: var(--accent); }
 
 /* ---------- Buttons & pills ---------- */
 .btn {
